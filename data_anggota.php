@@ -11,7 +11,7 @@ require_once "koneksi.php";
 $sql = "SELECT id, no_anggota, nama_lengkap, email,
         no_hp, jenis_anggota, alamat
         FROM anggota
-        ORDER BY id DESC";
+        ORDER BY id ASC";
 
 $result = mysqli_query($koneksi, $sql);
 
@@ -43,6 +43,7 @@ if (!$result) {
             <th>No. HP</th>
             <th>Jenis Anggota</th>
             <th>Alamat</th>
+            <th>Aksi</th>
         </tr>
 
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -54,6 +55,15 @@ if (!$result) {
             <td><?= htmlspecialchars($row["no_hp"]) ?></td>
             <td><?= htmlspecialchars($row["jenis_anggota"]) ?></td>
             <td><?= htmlspecialchars($row["alamat"]) ?></td>
+
+            <td>
+                <a href="detail.php?id=<?php echo (int) $baris["nim"]; ?>">Detail</a>
+                <form class="inline" action="hapus.php" method="post"
+                        onsubmit="return confirm('Yakin ingin menghapus data ini?');">
+                    <input type="hidden" name="id" value="<?php echo (int) $baris["nim"]; ?>">
+                    <button type="submit">Hapus</button>
+                </form>
+            </td>
         </tr>
         <?php } ?>
 

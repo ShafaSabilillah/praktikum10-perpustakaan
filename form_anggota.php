@@ -64,6 +64,10 @@ Kelas   : TI-2C
         <button type="reset">Reset</button>
 
     </form>
+    <br><br>
+    <a href="data_anggota.php">
+        <button type="button">Lihat Data Anggota</button>
+    </a>
 
 </body>
 </html>
