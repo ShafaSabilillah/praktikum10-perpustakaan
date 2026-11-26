@@ -46,21 +46,21 @@ if (!$result) {
             <th>Aksi</th>
         </tr>
 
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+        <?php while ($baris = mysqli_fetch_assoc($result)) { ?>
         <tr>
-            <td><?= htmlspecialchars($row["id"]) ?></td>
-            <td><?= htmlspecialchars($row["no_anggota"]) ?></td>
-            <td><?= htmlspecialchars($row["nama_lengkap"]) ?></td>
-            <td><?= htmlspecialchars($row["email"]) ?></td>
-            <td><?= htmlspecialchars($row["no_hp"]) ?></td>
-            <td><?= htmlspecialchars($row["jenis_anggota"]) ?></td>
-            <td><?= htmlspecialchars($row["alamat"]) ?></td>
+            <td><?= htmlspecialchars($baris["id"]) ?></td>
+            <td><?= htmlspecialchars($baris["no_anggota"]) ?></td>
+            <td><?= htmlspecialchars($baris["nama_lengkap"]) ?></td>
+            <td><?= htmlspecialchars($baris["email"]) ?></td>
+            <td><?= htmlspecialchars($baris["no_hp"]) ?></td>
+            <td><?= htmlspecialchars($baris["jenis_anggota"]) ?></td>
+            <td><?= htmlspecialchars($baris["alamat"]) ?></td>
 
             <td>
-                <a href="detail.php?id=<?php echo (int) $baris["nim"]; ?>">Detail</a>
-                <form class="inline" action="hapus.php" method="post"
+                <a href="edit_anggota.php?id=<?php echo (int) $baris["id"]; ?>">Edit</a>
+                <form action="hapus_anggota.php" method="POST"
                         onsubmit="return confirm('Yakin ingin menghapus data ini?');">
-                    <input type="hidden" name="id" value="<?php echo (int) $baris["nim"]; ?>">
+                    <input type="hidden" name="id" value="<?php echo (int) $baris["id"]; ?>">
                     <button type="submit">Hapus</button>
                 </form>
             </td>
